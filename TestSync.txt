@@ -1,0 +1,8 @@
+nothing important today 
+
+
+C:\Users\X1 CARBON\Desktop\TestSync.txt
+
+-your mission to give me deatils steps about: how to upload file text from local ( my laptop ) to github through jenkins 
+- i have jenkins in image on docker
+-
