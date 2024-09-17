@@ -16,13 +16,13 @@ def get_ahmed_salary():
 
         # Query to search for Ahmed's salary
         query = sql.SQL("SELECT name, salary FROM employees WHERE name = %s")
-        cursor.execute(query, ('ahmed',))
+        cursor.execute(query, ('khaled',))
 
         # Fetch the result
         result = cursor.fetchone()
 
         if result:
-            print(f"Ahmed's salary: {result[1]}")
+            print(f"khaled's salary: {result[1]}")
         else:
             print("Ahmed not found in the database.")
 
@@ -34,6 +34,6 @@ def get_ahmed_salary():
         print(f"Error: {error}")
 
 if __name__ == "__main__":
-    get_ahmed_salary()
+    get_khaled_salary()
 
 #print("Hello, World! from onemin.py")
