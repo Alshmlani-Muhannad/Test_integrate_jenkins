@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2 import sql
 
-def get_ahmed_salary():
+def get_salary(name):
     try:
         # Connect to your friend's PostgreSQL database
         conn = psycopg2.connect(
@@ -14,17 +14,17 @@ def get_ahmed_salary():
 
         cursor = conn.cursor()
 
-        # Query to search for Ahmed's salary
+        # Query to search for the specified name's salary
         query = sql.SQL("SELECT name, salary FROM employees WHERE name = %s")
-        cursor.execute(query, ('khaled',))
+        cursor.execute(query, (name,))
 
         # Fetch the result
         result = cursor.fetchone()
 
         if result:
-            print(f"Ahmed's salary: {result[1]}")
+            print(f"{name}'s salary: {result[1]}")
         else:
-            print("Ahmed not found in the database.")
+            print(f"{name} not found in the database.")
 
         # Close connection
         cursor.close()
@@ -34,10 +34,8 @@ def get_ahmed_salary():
         print(f"Error: {error}")
 
 if __name__ == "__main__":
-    get_ahmed_salary()
-
-#print("Hello, World! from onemin.py")
-
+    name = input("Enter the name: ")
+    get_salary(name)
 
 """
 import psycopg2
