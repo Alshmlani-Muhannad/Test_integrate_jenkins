@@ -1,11 +1,12 @@
+# script name: search_salary.py
 import psycopg2
 from psycopg2 import sql
+import os
 
 def get_salary_by_name(name):
     try:
         # Connect to your friend's PostgreSQL database
-        conn = psycopg2.connect(
-                       host="192.168.200.86",  # Replace with the IP address of your friend's server
+          host="192.168.200.86",  # Replace with the IP address of your friend's server
             database="postgres",  # Replace with the actual database name
             user="postgres",  # Replace with your PostgreSQL username
             password="123456789",  # Replace with your PostgreSQL password
@@ -34,9 +35,10 @@ def get_salary_by_name(name):
         print(f"Error: {error}")
 
 if __name__ == "__main__":
-    # Take user input for the name
-    name = input("khaled: ")
+    # Read the name from the environment variable
+    name = os.getenv('SEARCH_NAME', 'Ahmed')  # Default to 'Ahmed' if the variable is not set
     get_salary_by_name(name)
+
 """
 import psycopg2
 from psycopg2 import sql
