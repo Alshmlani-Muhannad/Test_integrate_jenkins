@@ -16,7 +16,7 @@ def get_ahmed_salary():
 
         # Query to search for Ahmed's salary
         query = sql.SQL("SELECT name, salary FROM employees WHERE name = %s")
-        cursor.execute(query, ('Ahmed',))
+        cursor.execute(query, ('ahmed',))
 
         # Fetch the result
         result = cursor.fetchone()
