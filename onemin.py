@@ -16,7 +16,7 @@ def get_salary(name):
 
         # Query to search for the specified name's salary
         query = sql.SQL("SELECT name, salary FROM employees WHERE name = %s")
-        cursor.execute(query, (name,))
+        cursor.execute(query, ('ahmed',))
 
         # Fetch the result
         result = cursor.fetchone()
@@ -34,7 +34,7 @@ def get_salary(name):
         print(f"Error: {error}")
 
 if __name__ == "__main__":
-    name = input("Enter the name: ")
+    name = input("khaled: ")
     get_salary(name)
 
 """
