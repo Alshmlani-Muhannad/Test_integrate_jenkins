@@ -35,7 +35,7 @@ def get_salary(name):
 
 if __name__ == "__main__":
     # Set the name here (replace "khaled" with the desired name)
-    name_to_search = "khaled"
+    name_to_search = "fahad"
     get_salary(name_to_search)
 
 """
