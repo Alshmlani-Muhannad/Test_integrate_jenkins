@@ -1,31 +1,30 @@
-# script name: search_salary.py
 import psycopg2
 from psycopg2 import sql
-import os
 
-def get_salary_by_name(name):
+def get_ahmed_salary():
     try:
         # Connect to your friend's PostgreSQL database
-          host="192.168.200.86"  # Replace with the IP address of your friend's server
-            database="postgres"  # Replace with the actual database name
-            user="postgres"  # Replace with your PostgreSQL username
-            password="123456789"  # Replace with your PostgreSQL password
+        conn = psycopg2.connect(
+            host="192.168.200.86",  # Replace with the IP address of your friend's server
+            database="postgres",  # Replace with the actual database name
+            user="postgres",  # Replace with your PostgreSQL username
+            password="123456789",  # Replace with your PostgreSQL password
             port="5432"  # PostgreSQL port (default is 5432)
         )
 
         cursor = conn.cursor()
 
-        # Query to search for the salary of a given name
+        # Query to search for Ahmed's salary
         query = sql.SQL("SELECT name, salary FROM employees WHERE name = %s")
-        cursor.execute(query, (name,))
+        cursor.execute(query, ('ahmed',))
 
         # Fetch the result
         result = cursor.fetchone()
 
         if result:
-            print(f"{name}'s salary: {result[1]}")
+            print(f"Ahmed's salary: {result[1]}")
         else:
-            print(f"{name} not found in the database.")
+            print("Ahmed not found in the database.")
 
         # Close connection
         cursor.close()
@@ -35,9 +34,10 @@ def get_salary_by_name(name):
         print(f"Error: {error}")
 
 if __name__ == "__main__":
-    # Read the name from the environment variable
-    name = os.getenv('SEARCH_NAME', 'Ahmed')  # Default to 'Ahmed' if the variable is not set
-    get_salary_by_name(name)
+    get_ahmed_salary()
+
+#print("Hello, World! from onemin.py")
+
 
 """
 import psycopg2
