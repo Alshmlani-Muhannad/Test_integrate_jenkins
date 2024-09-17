@@ -16,7 +16,7 @@ def get_salary(name):
 
         # Query to search for the specified name's salary
         query = sql.SQL("SELECT name, salary FROM employees WHERE name = %s")
-        cursor.execute(query, ('ahmed',))
+        cursor.execute(query, (name,))
 
         # Fetch the result
         result = cursor.fetchone()
@@ -34,8 +34,9 @@ def get_salary(name):
         print(f"Error: {error}")
 
 if __name__ == "__main__":
-    name = input("khaled: ")
-    get_salary(name)
+    # Set the name here (replace "khaled" with the desired name)
+    name_to_search = "khaled"
+    get_salary(name_to_search)
 
 """
 import psycopg2
