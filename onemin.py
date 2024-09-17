@@ -6,10 +6,10 @@ import os
 def get_salary_by_name(name):
     try:
         # Connect to your friend's PostgreSQL database
-          host="192.168.200.86",  # Replace with the IP address of your friend's server
-            database="postgres",  # Replace with the actual database name
-            user="postgres",  # Replace with your PostgreSQL username
-            password="123456789",  # Replace with your PostgreSQL password
+          host="192.168.200.86"  # Replace with the IP address of your friend's server
+            database="postgres"  # Replace with the actual database name
+            user="postgres"  # Replace with your PostgreSQL username
+            password="123456789"  # Replace with your PostgreSQL password
             port="5432"  # PostgreSQL port (default is 5432)
         )
 
