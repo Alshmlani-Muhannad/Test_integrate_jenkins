@@ -1,33 +1,32 @@
-from pymongo import MongoClient, errors
+from pymongo import MongoClient
+
+# MongoDB connection parameters
+conn_params = {
+    'host': 'mongodb://192.168.200.86:27017/',  # MongoDB URI
+    'database': 'creative',  # Name of your MongoDB database
+    'collection': 'employees'  # Name of your MongoDB collection
+}
+
+first_name = 'Mark'
 
 try:
-    # Connect to MongoDB (update the connection string if necessary)
-    client = MongoClient("mongodb://192.168.200.86:27017/")
-    
-    # Access the 'test' database (change to your database name if different)
-    db = client["creative"]
-    name_to_find = 'Mark'
-    # Access the 'employees' collection
-    collection = db["employees"]
-    
-    # Query the collection for documents where the name is 'John'
-    query = {"first_name": name_to_find}
-    
-    # Find documents that match the query
-    results = collection.find(query)
-    
-    # Check if any documents were found and print them
-    found = False
-    for document in results:
-        print(document)
-        found = True
-    
-    if not found:
-        print("No documents found with the name"+name_to_find)
+    # Establish a connection to the MongoDB database
+    client = MongoClient(conn_params['host'])
+    print("Connected to the database")
 
-except errors.ConnectionError as ce:
-    print(f"Connection Error: {ce}")
-except errors.InvalidName as ine:
-    print(f"Invalid Database or Collection Name: {ine}")
+    # Access the database and collection
+    db = client[conn_params['database']]
+    collection = db[conn_params['collection']]
+
+    # Define the query to find the document with the specified first name
+    query = {"first_name": first_name}
+    document = collection.find_one(query)
+
+    if document:
+        # Print the ID, first name, and salary of the document
+        print(f"ID: {document.get('_id')}, First Name: {document.get('first_name')}, Salary: {document.get('salary')}")
+    else:
+        print(f"No record found with first name {first_name}")
+
 except Exception as e:
     print(f"An error occurred: {e}")
